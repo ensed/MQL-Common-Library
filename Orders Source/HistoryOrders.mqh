@@ -1,14 +1,12 @@
 #property strict
 
 #include "OrdersSource.mqh"
-#include <Generic\HashSet.mqh>
+
 class HistoryOrders : public OrdersSource
 {
    private:
       static HistoryOrders* m_instance;
       static datetime startSelectionTime;
-      
-      static CHashSet<ulong> m_ticketsSet;
    public:   
       #ifdef __MQL5__
       virtual void Update() override
@@ -33,7 +31,7 @@ class HistoryOrders : public OrdersSource
          {
             ulong ticket = HistoryDealGetTicket(i);
             
-            if(AccountInfoInteger(ACCOUNT_TRADE_MODE) == ACCOUNT_MARGIN_MODE_RETAIL_NETTING)
+            if(AccountInfoInteger(ENUM_ACCOUNT_MARGIN_MODE) == ACCOUNT_MARGIN_MODE_RETAIL_NETTING)
             {
                if(HistoryDealGetInteger(ticket, DEAL_TYPE) != DEAL_TYPE_BUY && HistoryDealGetInteger(ticket, DEAL_TYPE) != DEAL_TYPE_SELL)
                {
@@ -203,4 +201,3 @@ class HistoryOrders : public OrdersSource
 
 HistoryOrders* HistoryOrders::m_instance;
 datetime HistoryOrders::startSelectionTime = (datetime)0;
-CHashSet<ulong> HistoryOrders::m_ticketsSet;

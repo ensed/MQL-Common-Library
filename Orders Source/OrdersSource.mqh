@@ -102,6 +102,11 @@ class OrdersSource
          return m_orders[index].IsTypeMarket();
       }
       
+      bool GetIsTypePending(const int index)
+      {
+         return m_orders[index].IsTypePending();
+      }
+      
       bool GetIsTypeBuy(const int index)
       {
          return m_orders[index].IsTypeBuy();

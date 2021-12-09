@@ -173,7 +173,7 @@ class OrderInfo
          }
          
          long historyTicket = 0;
-         if(AccountInfoInteger(ACCOUNT_TRADE_MODE) == ACCOUNT_MARGIN_MODE_RETAIL_NETTING)
+         if(AccountInfoInteger(ENUM_ACCOUNT_MARGIN_MODE) == ACCOUNT_MARGIN_MODE_RETAIL_NETTING)
          {
             historyTicket = (long)positionId;
          }
@@ -317,6 +317,11 @@ class OrderInfo
 		bool IsTypeMarket() const
 		{		   
 		   return Type == OrderType_Buy || Type == OrderType_Sell;
+		}
+		
+		bool IsTypePending() const
+		{		   
+		   return Type == OrderType_BuyStop || Type == OrderType_SellStop || Type == OrderType_BuyLimit || Type == OrderType_SellLimit;
 		}
 		
 		bool IsTypeBuy() const { return Type == OrderType_Buy; }
@@ -497,7 +502,7 @@ class OrderInfo
       private:
          ulong GetHistoryTicket(const ulong openedTicket)
          {			   
-            if(AccountInfoInteger(ACCOUNT_TRADE_MODE) == ACCOUNT_MARGIN_MODE_RETAIL_NETTING)
+            if(AccountInfoInteger(ENUM_ACCOUNT_MARGIN_MODE) == ACCOUNT_MARGIN_MODE_RETAIL_NETTING)
             {
                return openedTicket;
             }
