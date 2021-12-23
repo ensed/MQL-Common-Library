@@ -4,10 +4,11 @@
 #include "..\Helpers\ArraysHelper.mqh"
 #include "..\Models\CommonOrderType.mqh"
 #include "..\Orders Source\OpenOrders.mqh"
-#include "..\Orders Source\ClosedOrders.mqh"
-#include <Common Library\Profiler\Profiler.mqh>
+#include "..\Orders Source\HistoryOrders.mqh"
 
+#ifdef __MQL5__
 #include <Generic\HashMap.mqh>
+#endif 
 
 class FilterByCountOfOpenOrdersAtCurrentBar : public Filter
 {
@@ -23,19 +24,23 @@ class FilterByCountOfOpenOrdersAtCurrentBar : public Filter
       datetime m_lastPositiveResultsBarTime;
       #endif 
 
+      #ifdef __MQL5__
       CHashMap<ulong, datetime>* m_hashedTimeOpen;
+      #endif 
       
    public:
       FilterByCountOfOpenOrdersAtCurrentBar
       (
          const string instrument, const ENUM_TIMEFRAMES timeframe, const int magic, const int maxOrdersCount, const EnumOrderType type
       )
+      #ifdef __MQL5__
       :
-         m_hashedTimeOpen(new CHashMap<ulong, datetime>(UNRELEASED_POINTERS_PROFILING_CONSTRUCTOR_PARAMETER))
+         m_hashedTimeOpen(new CHashMap<ulong, datetime>())
+      #endif 
       {
          m_instrument = instrument;
          m_timeframe = timeframe;
-         ArraysHelper::AddToArray(magic, m_magics ADD_TO_ARRAY_TRACING_CALLER);
+         ArraysHelper::AddToArray(magic, m_magics);
          m_maxOrdersCount = maxOrdersCount;
          m_type = type;
          
@@ -46,13 +51,15 @@ class FilterByCountOfOpenOrdersAtCurrentBar : public Filter
       (
          const string instrument, const ENUM_TIMEFRAMES timeframe, const int magic1, const int magic2, const int maxOrdersCount, const EnumOrderType type
       )
+      #ifdef __MQL5__
       :
-         m_hashedTimeOpen(new CHashMap<ulong, datetime>(UNRELEASED_POINTERS_PROFILING_CONSTRUCTOR_PARAMETER))
+         m_hashedTimeOpen(new CHashMap<ulong, datetime>())
+      #endif
       {
          m_instrument = instrument;
          m_timeframe = timeframe;
-         ArraysHelper::AddToArray(magic1, m_magics ADD_TO_ARRAY_TRACING_CALLER);
-         ArraysHelper::AddToArray(magic2, m_magics ADD_TO_ARRAY_TRACING_CALLER);
+         ArraysHelper::AddToArray(magic1, m_magics);
+         ArraysHelper::AddToArray(magic2, m_magics);
          m_maxOrdersCount = maxOrdersCount;
          m_type = type;
          
@@ -63,8 +70,10 @@ class FilterByCountOfOpenOrdersAtCurrentBar : public Filter
       (
          const string instrument, const ENUM_TIMEFRAMES timeframe, const int &magics[], const int maxOrdersCount, const EnumOrderType type
       )
+      #ifdef __MQL5__
       :
-         m_hashedTimeOpen(new CHashMap<ulong, datetime>(UNRELEASED_POINTERS_PROFILING_CONSTRUCTOR_PARAMETER))
+         m_hashedTimeOpen(new CHashMap<ulong, datetime>())
+      #endif
       {
          m_instrument = instrument;
          m_timeframe = timeframe;
@@ -77,7 +86,9 @@ class FilterByCountOfOpenOrdersAtCurrentBar : public Filter
       
       ~FilterByCountOfOpenOrdersAtCurrentBar()
       {
+         #ifdef __MQL5__
          delete m_hashedTimeOpen;
+         #endif
       }
       
       virtual Filter* GetCopy() override final
