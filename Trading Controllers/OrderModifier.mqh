@@ -124,7 +124,7 @@ class OrderModifier
             
             TradeContext::CaptureTradeContext();
             
-            if(OrderModify(m_ticket, m_priceOpen, m_newStopLoss, m_newTakeProfit, m_expiration))
+            if(OrderModify((int)m_ticket, m_priceOpen, m_newStopLoss, m_newTakeProfit, m_expiration))
             {
                m_stopLoss = m_newStopLoss;
                m_takeProfit = m_newTakeProfit;
