@@ -3,8 +3,6 @@
 
 #property strict
 
-#include <PipsMasters Library\Enums\EnumSignalDirection.mqh>   //common references to implementation :(
-
 class SignalChecker
 {
    public:
