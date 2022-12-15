@@ -6,7 +6,7 @@
 #include "EntryProcessor.mqh"
 #include "..\Trading Controllers\OrderOpener.mqh"
 #include "..\Trading Controllers\OrderModifier.mqh"
-#include "..\ValueCalculator\DoubleValueCalculator.mqh"
+#include <Common Library\Value Calculator\DoubleValueCalculator.mqh>
 
 class EntryProcessorForPendingOrder : public EntryProcessor
 {

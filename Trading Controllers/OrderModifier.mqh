@@ -33,12 +33,12 @@ class OrderModifier
       
    public:      
       OrderModifier(const long ticket, const int slippage, const double newStopLoss, const double newTakeProfit)
-      {
+      {         
          m_slippage = slippage;
          m_newStopLoss = newStopLoss;
          m_newTakeProfit = newTakeProfit; 
          m_ticket = ticket;    
-         
+         m_priceOpen = 0.0;
          #ifdef __MQL5__
          m_trade.SetDeviationInPoints(m_slippage);
          #endif     
@@ -123,7 +123,7 @@ class OrderModifier
             }
             
             TradeContext::CaptureTradeContext();
-            
+
             if(OrderModify((int)m_ticket, m_priceOpen, m_newStopLoss, m_newTakeProfit, m_expiration))
             {
                m_stopLoss = m_newStopLoss;
@@ -147,7 +147,9 @@ class OrderModifier
             Print
             (
                "Error in ", __FILE__, " ", __FUNCSIG__, " line #", __LINE__,  ": ", (string)m_errorCode," (",marketError.ToString() ,");",
-               " stop loss = ", DoubleToString(m_newStopLoss, m_digits), ", take profit = ", DoubleToString(m_newTakeProfit, m_digits)
+               " price open = ", DoubleToString(m_priceOpen, m_digits), 
+               ", stop loss = ", DoubleToString(m_newStopLoss, m_digits), 
+               ", take profit = ", DoubleToString(m_newTakeProfit, m_digits)
             );
          }
          
@@ -162,7 +164,7 @@ class OrderModifier
       bool InitByTicket()
       {
          if(OrderSelect((int)m_ticket, SELECT_BY_TICKET))
-         {               
+         {             
             if(m_priceOpen == 0)
             {                
                m_priceOpen = OrderOpenPrice();

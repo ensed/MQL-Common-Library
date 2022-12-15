@@ -24,7 +24,7 @@ template <typename T> class ObjectsList
          ArraysHelper::CopyArray(items, m_items);
          m_itemsCount = ArraySize(m_items);
       }
-      
+            
       ~ObjectsList()
       {         
          PointersReleaser::Release(m_items);
