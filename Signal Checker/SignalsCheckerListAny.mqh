@@ -65,6 +65,18 @@ class SignalsCheckerListAny : public ObjectsList<SignalChecker*>
          m_instanceID=++numberOfInstnces;
          Add(item);
       }   
+
+      SignalsCheckerListAny(SignalChecker* item1, SignalChecker* item2)
+      :
+         ObjectsList(item1, item2)
+      {
+      }
+
+      SignalsCheckerListAny(SignalChecker* item1, SignalChecker* item2, SignalChecker* item3)
+      :
+         ObjectsList(item1, item2, item3)
+      {
+      }
       
       SignalsCheckerListAny
       (

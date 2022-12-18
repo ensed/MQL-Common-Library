@@ -24,6 +24,30 @@ template <typename T> class ObjectsList
          ArraysHelper::CopyArray(items, m_items);
          m_itemsCount = ArraySize(m_items);
       }
+
+      ObjectsList(T &item)
+      {
+         ArrayFree(m_items);
+         ArraysHelper::AddToArray(item, m_items);
+         m_itemsCount = ArraySize(m_items);
+      }
+
+      ObjectsList(T &item1, T &item2)
+      {
+         ArrayFree(m_items);
+         ArraysHelper::AddToArray(item1, m_items);
+         ArraysHelper::AddToArray(item2, m_items);
+         m_itemsCount = ArraySize(m_items);
+      }
+
+      ObjectsList(T &item1, T &item2, T &item3)
+      {
+         ArrayFree(m_items);
+         ArraysHelper::AddToArray(item1, m_items);
+         ArraysHelper::AddToArray(item2, m_items);
+         ArraysHelper::AddToArray(item3, m_items);
+         m_itemsCount = ArraySize(m_items);
+      }
             
       ~ObjectsList()
       {         

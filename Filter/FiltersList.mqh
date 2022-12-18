@@ -9,6 +9,30 @@
 class FiltersList : public ObjectsList<Filter*>
 {      
    public:
+      FiltersList()
+      :
+         ObjectsList()
+      {
+      }
+      
+      FiltersList(Filter* item)
+      :
+         ObjectsList(item)
+      {
+      }
+
+      FiltersList(Filter* item1, Filter* item2)
+      :
+         ObjectsList(item1, item2)
+      {
+      }
+
+      FiltersList(Filter* item1, Filter* item2, Filter* item3)
+      :
+         ObjectsList(item1, item2, item3)
+      {
+      }
+      
       bool IsAnyValid()
       {
          for(int i = 0; i < ItemsCount(); i++)

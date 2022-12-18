@@ -27,7 +27,7 @@ class FilterByTimeRange : public Filter
       (
          const int startHour, const int startMinute, 
          const int stopHour, const int stopMinute,
-         const EnumTimeModeForFilterByTimeRange timeMode
+         const EnumTimeModeForFilterByTimeRange timeMode = TimeModeForFilterByTimeRange_Current
       )
       {
          m_startHour = startHour;
@@ -40,7 +40,7 @@ class FilterByTimeRange : public Filter
       FilterByTimeRange
       (
          const string startHHMMTime, const string stopHHMMTime,
-         const EnumTimeModeForFilterByTimeRange timeMode
+         const EnumTimeModeForFilterByTimeRange timeMode = TimeModeForFilterByTimeRange_Current
       )
       {
          TimeHHMMFromStringParser startTimeParser(startHHMMTime);
