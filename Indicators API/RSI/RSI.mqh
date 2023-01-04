@@ -60,7 +60,7 @@ class RSI : public IndicatorAPIBase
             m_symbol,
             m_timeframe,
             m_parameters.Period(),
-            m_parameters.Price(),
+            m_parameters.AppliedPrice(),
             shift
          );
 #endif
