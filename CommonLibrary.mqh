@@ -7,6 +7,7 @@
 #include <Common Library\Helpers\VolumeNormalizer.mqh>
 #include <Common Library\Indicators API\IndicatorAPIBase.mqh>
 #include <Common Library\Indicators API\MA\MA.mqh>
+#include <Common Library\Indicators API\RSI\RSI.mqh>
 #include <Common Library\Modifiable Value Calculator\ModifiableValueCalculator.mqh>
 #include <Common Library\Modifiable Value Calculator\ModifiableValueCalculatorFixed.mqh>
 #include <Common Library\Modifiable Value Calculator\StopLossCalculatorFixed.mqh>
