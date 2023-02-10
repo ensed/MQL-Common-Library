@@ -173,7 +173,7 @@ class OrderInfo
          }
          
          long historyTicket = 0;
-         if(AccountInfoInteger(ENUM_ACCOUNT_MARGIN_MODE) == ACCOUNT_MARGIN_MODE_RETAIL_NETTING)
+         if(AccountInfoInteger(ACCOUNT_MARGIN_MODE) == ACCOUNT_MARGIN_MODE_RETAIL_NETTING)
          {
             historyTicket = (long)positionId;
          }
@@ -502,7 +502,7 @@ class OrderInfo
       private:
          ulong GetHistoryTicket(const ulong openedTicket)
          {			   
-            if(AccountInfoInteger(ENUM_ACCOUNT_MARGIN_MODE) == ACCOUNT_MARGIN_MODE_RETAIL_NETTING)
+            if(AccountInfoInteger(ACCOUNT_MARGIN_MODE) == ACCOUNT_MARGIN_MODE_RETAIL_NETTING)
             {
                return openedTicket;
             }

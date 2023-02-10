@@ -31,7 +31,7 @@ class HistoryOrders : public OrdersSource
          {
             ulong ticket = HistoryDealGetTicket(i);
             
-            if(AccountInfoInteger(ENUM_ACCOUNT_MARGIN_MODE) == ACCOUNT_MARGIN_MODE_RETAIL_NETTING)
+            if(AccountInfoInteger(ACCOUNT_MARGIN_MODE) == ACCOUNT_MARGIN_MODE_RETAIL_NETTING)
             {
                if(HistoryDealGetInteger(ticket, DEAL_TYPE) != DEAL_TYPE_BUY && HistoryDealGetInteger(ticket, DEAL_TYPE) != DEAL_TYPE_SELL)
                {
@@ -47,12 +47,7 @@ class HistoryOrders : public OrdersSource
             }            
                               
             if(MQLInfoInteger(MQL_TESTER))
-            {            
-               if(m_ticketsSet.Contains(ticket))
-               {
-                  continue;
-               }
-               
+            {                           
                int ordersCount = ArraySize(m_orders);
                
                if(ordersCount < index + 1)
@@ -74,7 +69,6 @@ class HistoryOrders : public OrdersSource
                   m_orders[index].InitByHistoryDeal(ticket);
                   if(m_orders[index].TimeClose != (datetime)0)
                   {
-                     m_ticketsSet.Add(ticket);
                      startSelectionTime = m_orders[index].TimeClose;
                   }
                   
@@ -85,7 +79,6 @@ class HistoryOrders : public OrdersSource
                }
                else
                {
-                  m_ticketsSet.Add(ticket);
                   break;
                }
                
