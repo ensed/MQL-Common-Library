@@ -4,6 +4,7 @@
 #include <Common Library\Filter\FilterByCountOfOpenOrders.mqh>
 #include <Common Library\Filter\FilterByCountOfOpenOrdersAtCurrentBar.mqh>
 #include <Common Library\Filter\FilterByTimeRange.mqh>
+#include <Common Library\Geometry\Line.mqh>
 #include <Common Library\Helpers\VolumeNormalizer.mqh>
 #include <Common Library\Indicators API\IndicatorAPIBase.mqh>
 #include <Common Library\Indicators API\MA\MA.mqh>
