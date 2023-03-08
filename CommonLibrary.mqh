@@ -1,6 +1,7 @@
 #property strict
 
 #include <Common Library\Account\AccountBalanceCalcator\AccountBalanceCalculatorCurrent.mqh>
+#include <Common Library\Candle Tools\CandleTools.mqh>
 #include <Common Library\Filter\FilterByCountOfOpenOrders.mqh>
 #include <Common Library\Filter\FilterByCountOfOpenOrdersAtCurrentBar.mqh>
 #include <Common Library\Filter\FilterByTimeRange.mqh>
