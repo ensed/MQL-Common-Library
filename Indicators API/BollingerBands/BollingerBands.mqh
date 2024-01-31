@@ -60,21 +60,24 @@ class BollingerBands : public IndicatorAPIBase
       string m_symbol;
       ENUM_TIMEFRAMES m_timeframe;
       BollingerBandsParameters m_parameters;
+      ENUM_BANDS_LINE m_line;
       
    public:
-      BollingerBands(const string symbol, const ENUM_TIMEFRAMES timeframe, const BollingerBandsParameters &parameters)
+      BollingerBands(const string symbol, const ENUM_TIMEFRAMES timeframe, const BollingerBandsParameters &parameters, const ENUM_BANDS_LINE line)
       {
          m_symbol = symbol;
          m_timeframe = timeframe;
          m_parameters = parameters;
+         m_line = line;
       }
       
       double GetValue(const int shift) override
       {		
-         return iBollingerBands
+         return iBands
          (
             m_symbol, m_timeframe, 
-            m_parameters.Period(), m_parameters.Shift(), m_parameters.Method(), m_parameters.AppliedPrice(),
+            m_parameters.BandsPeriod(), m_parameters.Deviation(), m_parameters.BandsShift(), m_parameters.AppliedPrice(),
+            m_line,
             shift
          );
       }

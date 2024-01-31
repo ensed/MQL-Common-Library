@@ -7,10 +7,12 @@
 #include <Common Library\Filter\FilterByTimeRange.mqh>
 #include <Common Library\Geometry\Line.mqh>
 #include <Common Library\Helpers\VolumeNormalizer.mqh>
+#include <Common Library\Indicators API\BollingerBands\BollingerBands.mqh>
 #include <Common Library\Indicators API\IndicatorAPIBase.mqh>
 #include <Common Library\Indicators API\MA\MA.mqh>
 #include <Common Library\Indicators API\RSI\RSI.mqh>
 #include <Common Library\Indicators API\Tools\ZigZag Tools\ZigZagTools.mqh>
+#include <Common Library\Indicators API\WPR\WPR.mqh>
 #include <Common Library\Indicators API\ZigZag\ZigZag.mqh>
 #include <Common Library\Modifiable Value Calculator\ModifiableValueCalculator.mqh>
 #include <Common Library\Modifiable Value Calculator\ModifiableValueCalculatorFixed.mqh>
